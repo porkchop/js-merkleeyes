@@ -10,7 +10,7 @@ Client.prototype.get = function(key, cb) {
   w.writeByte(0x01); // "Get"
   w.writeByteArray(new Buffer(key));
   this.tmspCli.query(w.getBuffer(), function(res) {
-    var value = res.data.toBuffer();
+    var value = res.query.toBuffer();
     if (!!cb) {
       cb(value);
     } // TODO else warn?
